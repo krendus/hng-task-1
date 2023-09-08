@@ -8,7 +8,8 @@ app.use(express.urlencoded({ extended: true}));
 app.get("/api", (req, res) => {
     const { slack_name, track } = req.query;
     const date = new Date();
-    const utc_time = date.toISOString();
+    const utc_time = date.toISOString().split(".")[0] + "Z";
+    
     let current_day;
     let current_day_index = date.getDay();
 
